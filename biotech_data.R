@@ -1,0 +1,10 @@
+library(tidyverse,ggplot2)
+data <- readr::read_csv('/Users/jacknugent/Downloads/Copy of r_biotech salary and company survey - 2025.csv')
+names(data)=make.names(names(data))
+names(data)
+#rename(data,'level_education'=Select.the.highest.level.of.education.that.you.have.that.s.relevant.to.your.occupation..If.you.have.multiple..e.g..PhD...MD..please.select..Other..and.describe)
+data = filter(data,Select.the.highest.level.of.education.that.you.have.that.s.relevant.to.your.occupation..If.you.have.multiple..e.g..PhD...MD..please.select..Other..and.describe == 'PhD')
+
+p<- ggplot(data,aes(x=Annual.Base.Salary...What.is.your.annual.BASE.salary..Do.not.include.bonus.or.stocks..If.you.are.paid.hourly..multiply.by.2080.to.convert.to.yearly..assuming.you.work.40hr.week.))
+p<- p+ geom_histogram()
+print(p)
